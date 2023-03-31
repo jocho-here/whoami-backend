@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    backend:
+        environment:
+            DB_HOST: "database"
+    alembic:
+        environment:
+            DB_HOST: "database"

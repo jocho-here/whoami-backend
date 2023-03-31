@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    database:
+        image: postgres:13.2
+        environment:
+            POSTGRES_USER: "${DB_USER}"
+            POSTGRES_PASSWORD: "${DB_PASSWORD}"
+            POSTGRES_DB: "${DB_DATABASE}"
+        ports:
+            - "${DB_PORT}:${DB_PORT}"
+    backend:
+        image: whoami_back:${BASEVERSION}
+        env_file: .env
+        links:
+            - database
+    alembic:
+        image: whoami_back:${BASEVERSION}
+        env_file: .env
+        links:
+            - database

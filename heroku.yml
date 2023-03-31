@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: gunicorn -k uvicorn.workers.UvicornWorker whoami_back.api.asgi:app
